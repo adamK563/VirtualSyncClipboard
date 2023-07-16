@@ -1,1 +1,12 @@
 
+ubuntu@UbuntuDesktop:~/WebstormProjects/fde_practice/FED-practice$ sudo npm install
+npm ERR! code ENOENT
+npm ERR! syscall open
+npm ERR! path /home/ubuntu/WebstormProjects/fde_practice/FED-practice/package.json
+npm ERR! errno -2
+npm ERR! enoent ENOENT: no such file or directory, open '/home/ubuntu/WebstormProjects/fde_practice/FED-practice/package.json'
+npm ERR! enoent This is related to npm not being able to find a file.
+npm ERR! enoent 
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /root/.npm/_logs/2023-07-16T12_04_55_035Z-debug-0.log
