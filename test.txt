@@ -87,3 +87,29 @@ sudo cat /root/.npm/_logs/2023-07-16T12_34_23_513Z-debug-0.log
 69 verbose code -2
 70 error A complete log of this run can be found in:
 70 error     /root/.npm/_logs/2023-07-16T12_34_23_513Z-debug-0.log
+
+
+
+
+npm install
+npm ERR! code EACCES
+npm ERR! syscall open
+npm ERR! path /home/ubuntu/VScodeProjects/froject/package-lock.json
+npm ERR! errno -13
+npm ERR! Error: EACCES: permission denied, open '/home/ubuntu/VScodeProjects/froject/package-lock.json'
+npm ERR!  [Error: EACCES: permission denied, open '/home/ubuntu/VScodeProjects/froject/package-lock.json'] {
+npm ERR!   errno: -13,
+npm ERR!   code: 'EACCES',
+npm ERR!   syscall: 'open',
+npm ERR!   path: '/home/ubuntu/VScodeProjects/froject/package-lock.json'
+npm ERR! }
+npm ERR! 
+npm ERR! The operation was rejected by your operating system.
+npm ERR! It is likely you do not have the permissions to access this file as the current user
+npm ERR! 
+npm ERR! If you believe this might be a permissions issue, please double-check the
+npm ERR! permissions of the file and its containing directories, or try running
+npm ERR! the command again as root/Administrator.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/ubuntu/.npm/_logs/2023-07-16T12_41_39_247Z-debug-0.log
