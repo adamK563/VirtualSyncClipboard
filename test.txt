@@ -44,3 +44,24 @@ Dockerfile:17
   19 |     # Set the production environment
 --------------------
 ERROR: failed to solve: process "/bin/sh -c npm run build" did not complete successfully: exit code: 1
+
+
+
+
+{
+  "name": "my-react-app",
+  "version": "1.0.0",
+  "description": "My React App",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "react-scripts": "^5.0.0"
+  }
+}
+
