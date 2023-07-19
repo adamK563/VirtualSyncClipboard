@@ -1,115 +1,26 @@
+# Base image
+FROM node:14-alpine
 
-ubuntu@UbuntuDesktop:~/WebstormProjects/fde_practice/FED-practice$ sudo npm install
-npm ERR! code ENOENT
-npm ERR! syscall open
-npm ERR! path /home/ubuntu/WebstormProjects/fde_practice/FED-practice/package.json
-npm ERR! errno -2
-npm ERR! enoent ENOENT: no such file or directory, open '/home/ubuntu/WebstormProjects/fde_practice/FED-practice/package.json'
-npm ERR! enoent This is related to npm not being able to find a file.
-npm ERR! enoent 
+# Set the working directory
+WORKDIR /app
 
-npm ERR! A complete log of this run can be found in:
-npm ERR!     /root/.npm/_logs/2023-07-16T12_04_55_035Z-debug-0.log
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
+# Install dependencies
+RUN npm install
 
+# Copy the app's source code
+COPY . .
 
-sudo cat /root/.npm/_logs/2023-07-16T12_34_23_513Z-debug-0.log
-0 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install' ]
-1 info using npm@8.5.1
-2 info using node@v12.22.9
-3 timing npm:load:whichnode Completed in 0ms
-4 timing config:load:defaults Completed in 1ms
-5 timing config:load:file:/usr/share/nodejs/npm/npmrc Completed in 5ms
-6 timing config:load:builtin Completed in 5ms
-7 timing config:load:cli Completed in 2ms
-8 timing config:load:env Completed in 0ms
-9 timing config:load:file:/home/ubuntu/VScodeProjects/froject/.npmrc Completed in 0ms
-10 timing config:load:project Completed in 6ms
-11 timing config:load:file:/root/.npmrc Completed in 1ms
-12 timing config:load:user Completed in 1ms
-13 timing config:load:file:/etc/npmrc Completed in 0ms
-14 timing config:load:global Completed in 0ms
-15 timing config:load:validate Completed in 0ms
-16 timing config:load:credentials Completed in 0ms
-17 timing config:load:setEnvs Completed in 1ms
-18 timing config:load Completed in 17ms
-19 timing npm:load:configload Completed in 17ms
-20 timing npm:load:setTitle Completed in 1ms
-21 timing config:load:flatten Completed in 2ms
-22 timing npm:load:display Completed in 4ms
-23 verbose logfile /root/.npm/_logs/2023-07-16T12_34_23_513Z-debug-0.log
-24 timing npm:load:logFile Completed in 5ms
-25 timing npm:load:timers Completed in 0ms
-26 timing npm:load:configScope Completed in 0ms
-27 timing npm:load Completed in 28ms
-28 timing arborist:ctor Completed in 1ms
-29 timing arborist:ctor Completed in 2ms
-30 timing idealTree:init Completed in 101ms
-31 timing idealTree:userRequests Completed in 0ms
-32 silly idealTree buildDeps
-33 timing idealTree:#root Completed in 0ms
-34 timing idealTree:buildDeps Completed in 2ms
-35 timing idealTree:fixDepFlags Completed in 0ms
-36 timing idealTree Completed in 104ms
-37 timing reify:loadTrees Completed in 105ms
-38 timing reify:diffTrees Completed in 0ms
-39 silly reify moves {}
-40 timing reify:retireShallow Completed in 0ms
-41 timing reify:createSparse Completed in 0ms
-42 timing reify:loadBundles Completed in 0ms
-43 silly audit report null
-44 timing reify:audit Completed in 1ms
-45 timing reify:unpack Completed in 7ms
-46 timing reify:unretire Completed in 0ms
-47 timing build:queue Completed in 0ms
-48 timing build:deps Completed in 1ms
-49 timing build Completed in 1ms
-50 timing reify:build Completed in 1ms
-51 timing reify:trash Completed in 0ms
-52 timing reify:save Completed in 4ms
-53 timing reify Completed in 168ms
-54 timing command:install Completed in 171ms
-55 verbose stack Error: ENOENT: no such file or directory, open '/home/ubuntu/VScodeProjects/froject/package.json'
-56 verbose cwd /home/ubuntu/VScodeProjects/froject
-57 verbose Linux 5.19.0-46-generic
-58 verbose argv "/usr/bin/node" "/usr/bin/npm" "install"
-59 verbose node v12.22.9
-60 verbose npm  v8.5.1
-61 error code ENOENT
-62 error syscall open
-63 error path /home/ubuntu/VScodeProjects/froject/package.json
-64 error errno -2
-65 error enoent ENOENT: no such file or directory, open '/home/ubuntu/VScodeProjects/froject/package.json'
-66 error enoent This is related to npm not being able to find a file.
-66 error enoent
-67 verbose exit -2
-68 timing npm Completed in 435ms
-69 verbose code -2
-70 error A complete log of this run can be found in:
-70 error     /root/.npm/_logs/2023-07-16T12_34_23_513Z-debug-0.log
+# Build the app
+RUN npm run build
 
+# Set the production environment
+ENV NODE_ENV=production
 
+# Expose the desired port
+EXPOSE 3000
 
-
-npm install
-npm ERR! code EACCES
-npm ERR! syscall open
-npm ERR! path /home/ubuntu/VScodeProjects/froject/package-lock.json
-npm ERR! errno -13
-npm ERR! Error: EACCES: permission denied, open '/home/ubuntu/VScodeProjects/froject/package-lock.json'
-npm ERR!  [Error: EACCES: permission denied, open '/home/ubuntu/VScodeProjects/froject/package-lock.json'] {
-npm ERR!   errno: -13,
-npm ERR!   code: 'EACCES',
-npm ERR!   syscall: 'open',
-npm ERR!   path: '/home/ubuntu/VScodeProjects/froject/package-lock.json'
-npm ERR! }
-npm ERR! 
-npm ERR! The operation was rejected by your operating system.
-npm ERR! It is likely you do not have the permissions to access this file as the current user
-npm ERR! 
-npm ERR! If you believe this might be a permissions issue, please double-check the
-npm ERR! permissions of the file and its containing directories, or try running
-npm ERR! the command again as root/Administrator.
-
-npm ERR! A complete log of this run can be found in:
-npm ERR!     /home/ubuntu/.npm/_logs/2023-07-16T12_41_39_247Z-debug-0.log
+# Start the app
+CMD ["npm", "start"]
