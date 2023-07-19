@@ -1,67 +1,15 @@
-# Base image
-FROM node:14-alpine
-
-# Set the working directory
-WORKDIR /app
-
-# Copy package.json and package-lock.json
-COPY package*.json ./
-
-# Install dependencies
-RUN npm install
-
-# Copy the app's source code
-COPY . .
-
-# Build the app
-RUN npm run build
-
-# Set the production environment
-ENV NODE_ENV=production
-
-# Expose the desired port
-EXPOSE 3000
-
-# Start the app
-CMD ["npm", "start"]
-
-
-
-=> ERROR [6/6] RUN npm run build                                                                                                                                                               1.3s
-------
- > [6/6] RUN npm run build:
-#0 1.109 npm ERR! missing script: build
-#0 1.117 
-#0 1.117 npm ERR! A complete log of this run can be found in:
-#0 1.118 npm ERR!     /root/.npm/_logs/2023-07-19T06_48_07_514Z-debug.log
-------
-Dockerfile:17
---------------------
-  15 |     
-  16 |     # Build the app
-  17 | >>> RUN npm run build
-  18 |     
-  19 |     # Set the production environment
---------------------
-ERROR: failed to solve: process "/bin/sh -c npm run build" did not complete successfully: exit code: 1
-
-
-
-
-{
-  "name": "my-react-app",
-  "version": "1.0.0",
-  "description": "My React App",
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build"
-  },
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
-  "devDependencies": {
-    "react-scripts": "^5.0.0"
-  }
-}
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My React App</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+  <div id="root"></div>
+  <!-- This is where your React app will be rendered -->
+  <script src="main.js"></script>
+</body>
+</html>
